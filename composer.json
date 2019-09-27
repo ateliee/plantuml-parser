@@ -1,0 +1,24 @@
+{
+    "name": "ateliee/plantuml-parser",
+    "description": "PlantUML parse package",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "vlucas/phpdotenv": "^3.6",
+        "monolog/monolog": "^1.25"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.5",
+        "psy/psysh": "@stable"
+    },
+    "config": {
+        "platform": {
+            "php": "5.5.38"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Ateliee\\PlantUMLParser\\": "src/PlantUMLParser/"
+        }
+    }
+}
