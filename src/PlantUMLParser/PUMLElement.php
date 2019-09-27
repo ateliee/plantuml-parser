@@ -1,34 +1,93 @@
 <?php
 namespace Ateliee\PlantUMLParser;
 
-/**
- * Class PUMLParser
- */
-class PUMLElement{
+class PUMLElement {
 
     /**
-     * @var string $name
+     * @var string $value
      */
-    protected $name;
+    protected $value;
 
     /**
-     * @var string|null $alias
+     * @var string $comment
      */
-    protected $alias = null;
+    protected $comment;
 
     /**
-     * @var PUMLElement[] $childs
+     * @var PUMLSetting $setting
      */
-    protected $childs = null;
+    protected $setting;
 
     /**
-     * @param string $name
-     * @param null|string $alias
+     * @param string|PUMLElement $value
      */
-    public function __construct($name, $alias = null)
+    public function __construct($value)
     {
-        $this->name = $name;
-        $this->alias = $alias;
-        $this->childs = [];
+        $this->value = $value;
+    }
+
+    /**
+     * @param string $comment
+     * @return $this
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOutputComment()
+    {
+        if($this->comment){
+            $list = explode(PHP_EOL, $this->comment);
+            $before = '/\'';
+            $after = '\'/';
+            if(count($list) > 1){
+                $before = $this->setting->getIndentString().$before.PHP_EOL;
+                $after = PHP_EOL.$this->setting->getIndentString().$after;
+                $list = array_map(function($str){
+                    return $this->setting->getIndentString().'  '.$str;
+                }, $list);
+            }else{
+                $before = $this->setting->getIndentString().$before.' ';
+                $after = ' '.$after;
+            }
+            return PHP_EOL.$before.implode(PHP_EOL, $list).$after.PHP_EOL;
+        }
+        return "";
+    }
+
+    /**
+     * @param PUMLSetting $setting
+     * @return $this
+     */
+    public function setSetting($setting)
+    {
+        $this->setting = $setting;
+        return $this;
+    }
+
+    /**
+     * @return PUMLSetting
+     */
+    public function getSetting()
+    {
+        return $this->setting;
+    }
+
+    /**
+     * @return string|PUMLElement
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    public function __toString()
+    {
+        return $this->getOutputComment().$this->setting->getIndentString().$this->value;
     }
 }

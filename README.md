@@ -17,6 +17,11 @@
 * [ ] Component	(パッケージ図)
 * [ ] Component	(配置図)
 
+## 開発
+```
+composer dump-autoload
+```
+
 ## 参考
 * [Plant UML](http://plantuml.com/ja/)
 * [Real World PlantUML](https://real-world-plantuml.com/)
