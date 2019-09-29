@@ -51,21 +51,25 @@ class PUMLElementBlock extends PUMLElement implements \ArrayAccess {
         return $this;
     }
 
-    public function __toString()
+    /**
+     * @param string $current_indent
+     * @param int $indent
+     * @return string
+     */
+    public function str($current_indent, $indent)
     {
-        $this->value->setSetting($this->setting);
-
-        $str = $this->getOutputComment();
-        $str .= sprintf('%s %s%s%s{',
+        $str = $this->getOutputComment($current_indent);
+        $str .= $current_indent.sprintf('%s %s%s%s{',
                 $this->type,
                 $this->alias ? "\"".$this->name."\"" : $this->name,
                 $this->alias ? ' as '.$this->alias : '',
                 $this->attributes ? ' '.$this->attributes : ''
             ).PHP_EOL;
-        $this->value->getSetting()->incriment();
-        $str .= (string)$this->value;
-        $this->value->getSetting()->decriment();
-        $str .= '}'.PHP_EOL;
+        $str .= $this->value->str($current_indent.$this->make_indent($indent), $indent);
+        $str .= $current_indent.'}';
+        if(!$current_indent){
+            $str .= PHP_EOL;
+        }
         return $str;
     }
 

@@ -2,12 +2,16 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use Ateliee\PlantUMLParser\PUMLParser;
-use Ateliee\PlantUMLParser\Structure\PUMLSkinParam;
 use Ateliee\PlantUMLParser\PUMLKeyValue;
+use Ateliee\PlantUMLParser\PUMLStr;
+use Ateliee\PlantUMLParser\Structure\PUMLSkinParam;
 use Ateliee\PlantUMLParser\Structure\PUMLDefine;
 use Ateliee\PlantUMLParser\Structure\PUMLPackage;
 use Ateliee\PlantUMLParser\Structure\PUMLEntity;
 
+/**
+ * @see https://qiita.com/Tachy_Pochy/items/752ef6e3d38e970378f0
+ */
 $plant_uml = new PUMLParser();
 
 $plant_uml->getRoot()->add((new PUMLDefine('MAIN_ENTITY', '#E2EFDA-C6E0B4'))->setComment("図の中で目立たせたいエンティティに着色するための
@@ -31,6 +35,15 @@ $plant_uml->getRoot()->add(
     (new PUMLPackage('外部データベース', 'ext', '<<Database>>'))
         ->add(
             (new PUMLEntity('顧客マスタ', 'customer'))
+                ->add(new PUMLStr('+ 顧客ID [PK]'))
+                ->add(new PUMLStr('--'))
+                ->add(new PUMLStr('顧客名'))
+                ->add(new PUMLStr('郵便番号'))
+                ->add(new PUMLStr('住所'))
+                ->add(new PUMLStr('電話番号'))
+                ->add(new PUMLStr('FAX'))
         )
 );
+
+$plant_uml->save(__DIR__.'/test.puml');
 var_dump($plant_uml->output());

@@ -21,12 +21,16 @@ class PUMLElementList extends PUMLElement implements \ArrayAccess {
         $this->value[] = $elm;
     }
 
-    public function __toString()
+    /**
+     * @param string $current_indent
+     * @param int $indent
+     * @return string
+     */
+    public function str($current_indent, $indent)
     {
-        $str = $this->getOutputComment();
+        $str = $this->getOutputComment($current_indent);
         foreach($this->value as $v){
-            $v->setSetting($this->setting);
-            $str .= (string)$v.PHP_EOL;
+            $str .= $v->str($current_indent, $indent).PHP_EOL;
         }
         return $str;
     }
