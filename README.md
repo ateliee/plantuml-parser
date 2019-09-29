@@ -1,6 +1,7 @@
 # PlantUML parser for PHP
 
 [![Build Status](https://travis-ci.org/ateliee/plantuml-parser.svg?branch=development)](https://travis-ci.org/ateliee/plantuml-parser)
+[![Coverage Status](https://coveralls.io/repos/github/ateliee/plantuml-parser/badge.svg)](https://coveralls.io/github/ateliee/plantuml-parser)
 
 [PlantUML](http://plantuml.com/ja/)の書き込み・読み込みができるものがなかったので作成中。
 

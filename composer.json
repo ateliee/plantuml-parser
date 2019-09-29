@@ -20,7 +20,7 @@
         "psy/psysh": "^0.9.9"
     },
     "scripts": {
-        "test": "phpunit --coverage-clover logs/clover.xml"
+        "test": "phpunit"
     },
     "config": {
         "platform": {
