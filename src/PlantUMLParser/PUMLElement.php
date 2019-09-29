@@ -4,6 +4,20 @@ namespace Ateliee\PlantUMLParser;
 abstract class PUMLElement {
 
     /**
+     * get PUML Element name
+     *
+     * @return string
+     */
+    public static function name(){
+        $c = explode('\\', get_called_class());
+        $c = end($c);
+        if(preg_match('/^PUML(.+)$/', $c, $matchs)){
+            $c = $matchs[1];
+        }
+        return $c;
+    }
+
+    /**
      * @var string $value
      */
     protected $value;
