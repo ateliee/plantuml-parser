@@ -14,7 +14,7 @@ abstract class PUMLElement {
     protected $comment;
 
     /**
-     * @param string|PUMLElement $value
+     * @param string|PUMLElement|mixed $value
      */
     public function __construct($value)
     {
