@@ -64,6 +64,7 @@ class PUMLReadFile extends PUMLRead {
      */
     public function close(){
         fclose($this->file);
+        $this->file = null;
         $this->number = 0;
     }
 
