@@ -5,6 +5,8 @@ use Ateliee\PlantUMLParser\PUMLElement;
 
 /**
  * カーディナリティ
+ *
+ * @todo end noteに対応
  */
 class PUMLNote extends PUMLElement {
 

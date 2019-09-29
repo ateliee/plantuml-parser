@@ -39,10 +39,10 @@ class PUMLReadString extends PUMLRead {
      * @return string|false
      */
     public function next(){
-        if(count($this->lines) >= $this->number){
-            return null;
+        if(count($this->lines) <= $this->number){
+            return false;
         }
-        return trim($this->lines[++$this->number]);
+        return trim($this->lines[$this->number++]);
     }
 
     /**

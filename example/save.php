@@ -125,6 +125,6 @@ $uml->add(
     (new PUMLNote('bottom of customer : 別プロジェクト\nDB-Linkで参照する'))
 );
 
-$plant_uml = new PUMLParser();
-$plant_uml->save(__DIR__.'/test.puml', $uml);
-var_dump($plant_uml->output($uml));
+$parser = new PUMLParser();
+$parser->save(__DIR__.'/test.puml', $uml);
+var_dump($parser->output($uml));
