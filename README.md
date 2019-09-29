@@ -33,11 +33,22 @@ composer require ateliee/plantuml-parser
 ## example
 
 ```
-$plant_uml = new PUMLParser();
+use Ateliee\PlantUMLParser\PUMLParser;
+use Ateliee\PlantUMLParser\PUMLKeyValue;
+use Ateliee\PlantUMLParser\PUMLStr;
+use Ateliee\PlantUMLParser\PUMLElementList;
+use Ateliee\PlantUMLParser\Structure\PUMLSkinParam;
+use Ateliee\PlantUMLParser\Structure\PUMLDefine;
+use Ateliee\PlantUMLParser\Structure\PUMLPackage;
+use Ateliee\PlantUMLParser\Structure\PUMLEntity;
+use Ateliee\PlantUMLParser\Structure\PUMLRelation;
+use Ateliee\PlantUMLParser\Structure\PUMLNote;
 
-$plant_uml->getRoot()->add((new PUMLDefine('MAIN_ENTITY', '#FCE4D6-F8CBAD'))->setComment("commnt to here"));
+$uml = new PUMLElementList();
 
-$plant_uml->getRoot()->add(
+$uml->add((new PUMLDefine('MAIN_ENTITY', '#FCE4D6-F8CBAD'))->setComment("commnt to here"));
+
+$uml->add(
     (new PUMLSkinParam('class'))
         ->setComment("default style.")
         ->add(new PUMLKeyValue('BackgroundColor', 'METAL'))
@@ -45,7 +56,7 @@ $plant_uml->getRoot()->add(
         ->add(new PUMLKeyValue('ArrowColor', 'Black'))
 );
 
-$plant_uml->getRoot()->add(
+$uml->add(
     (new PUMLPackage('DB', 'ext', '<<Database>>'))
         ->add(
             (new PUMLEntity('Customer'))
@@ -58,6 +69,8 @@ $plant_uml->getRoot()->add(
                 ->add(new PUMLStr('fax'))
         )
 );
+$plant_uml = new PUMLParser();
+$plant_uml->save(__DIR__.'/test.puml', $uml);
 ```
 
 ## 参考
