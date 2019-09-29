@@ -1,5 +1,7 @@
 # PlantUML parser for PHP
 
+[![Build Status](https://travis-ci.org/ateliee/plantuml-parser.svg?branch=development)](https://travis-ci.org/ateliee/plantuml-parser)
+
 [PlantUML](http://plantuml.com/ja/)の書き込み・読み込みができるものがなかったので作成中。
 
 ## usage
@@ -24,7 +26,7 @@ PlantUMLは機能が多いので、読み取り・出力はサポートしたい
 
 ## install
 ```
-composer install
+composer require ateliee/plantuml-parser
 ```
 
 ## example
