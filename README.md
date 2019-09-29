@@ -19,11 +19,11 @@ PlantUMLは機能が多いので、読み取り・出力のみサポート。
 * [ ] Activity (アクティビティ図)
 * [ ] State (ステートチャート図)	
 * [ ] Sequence (シーケンス図)
-* [x] Class(クラス図)
-* [ ] Object	(オブジェクト図)
-* [ ] Component	(コンポーネント図)
-* [ ] Component	(パッケージ図)
-* [ ] Component	(配置図)
+* [x] Class (クラス図)
+* [x] Object (オブジェクト図)
+* [ ] Component (コンポーネント図)
+* [ ] Component (パッケージ図)
+* [ ] Component (配置図)
 
 ## install
 ```
