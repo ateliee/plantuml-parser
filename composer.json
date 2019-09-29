@@ -1,6 +1,14 @@
 {
     "name": "ateliee/plantuml-parser",
     "description": "PlantUML parse package",
+    "homepage": "https://ateliee.com",
+    "authors": [
+        {
+            "name": "ateliee",
+            "email": "info@ateliee.com"
+        }
+    ],
+    "keywords": ["PlantUML", "AsciiDoc"],
     "type": "library",
     "license": "MIT",
     "require": {
@@ -11,6 +19,9 @@
         "phpunit/phpunit": "^4.8",
         "psy/psysh": "^0.9.9"
     },
+    "scripts": {
+        "test": "phpunit"
+    },
     "config": {
         "platform": {
             "php": "5.5.38"
@@ -18,7 +29,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Ateliee\\": "src/"
+            "Ateliee\\": "src/",
+            "Ateliee\\Tests\\": "tests/"
         }
     }
 }

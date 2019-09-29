@@ -22,7 +22,12 @@ PlantUMLは機能が多いので、読み取り・出力はサポートしたい
 * [ ] Component	(パッケージ図)
 * [ ] Component	(配置図)
 
-## 
+## install
+```
+composer install
+```
+
+## example
 
 ```
 $plant_uml = new PUMLParser();
