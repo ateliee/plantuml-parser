@@ -3,13 +3,13 @@
 [![Build Status](https://travis-ci.org/ateliee/plantuml-parser.svg?branch=development)](https://travis-ci.org/ateliee/plantuml-parser)
 [![Coverage Status](https://coveralls.io/repos/github/ateliee/plantuml-parser/badge.svg?branch=development)](https://coveralls.io/github/ateliee/plantuml-parser?branch=development)
 
-[PlantUML](http://plantuml.com/ja/)の書き込み・読み込みができるものがなかったので作成中。
+[PlantUML](http://plantuml.com/ja/)の書き込み・読み込みができるものがなかったので作成。
 
 ## usage
 * PHP 5.5.38 >=
 
 ## 機能
-PlantUMLは機能が多いので、読み取り・出力はサポートしたい。
+PlantUMLは機能が多いので、読み取り・出力のみサポート。
 
 論理式は今の所対応しない予定
 
@@ -19,7 +19,7 @@ PlantUMLは機能が多いので、読み取り・出力はサポートしたい
 * [ ] Activity (アクティビティ図)
 * [ ] State (ステートチャート図)	
 * [ ] Sequence (シーケンス図)
-* [ ] Class(クラス図)
+* [x] Class(クラス図)
 * [ ] Object	(オブジェクト図)
 * [ ] Component	(コンポーネント図)
 * [ ] Component	(パッケージ図)

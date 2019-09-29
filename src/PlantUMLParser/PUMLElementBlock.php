@@ -2,44 +2,23 @@
 namespace Ateliee\PlantUMLParser;
 
 /**
- * @property PUMLElementList $value
+ * @property string $value
  */
 class PUMLElementBlock extends PUMLElement implements \ArrayAccess {
 
     /**
-     * @var string $type
+     * @var PUMLElementList $childs
      */
-    protected $type;
+    protected $childs;
 
     /**
-     * @var string $name
+     * @param string $value
      */
-    protected $name;
-
-    /**
-     * @var string|null $alias
-     */
-    protected $alias = null;
-
-    /**
-     * @var string|null $attributes
-     */
-    protected $attributes = null;
-
-    /**
-     * @param string $type
-     * @param string $name
-     * @param null|string $alias
-     * @param null|string $attributes
-     */
-    public function __construct($type, $name, $alias = null, $attributes = null)
+    public function __construct($value)
     {
-        parent::__construct(new PUMLElementList());
+        parent::__construct($value);
 
-        $this->type = $type;
-        $this->name = $name;
-        $this->alias = $alias;
-        $this->attributes = $attributes;
+        $this->childs = new PUMLElementList();
     }
 
     /**
@@ -47,8 +26,15 @@ class PUMLElementBlock extends PUMLElement implements \ArrayAccess {
      * @return $this
      */
     public function add($elm){
-        $this->value->add($elm);
+        $this->childs->add($elm);
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getValueLabel(){
+        return $this->value;
     }
 
     /**
@@ -59,13 +45,8 @@ class PUMLElementBlock extends PUMLElement implements \ArrayAccess {
     public function str($current_indent, $indent)
     {
         $str = $this->getOutputComment($current_indent);
-        $str .= $current_indent.sprintf('%s %s%s%s{',
-                $this->type,
-                $this->alias ? "\"".$this->name."\"" : $this->name,
-                $this->alias ? ' as '.$this->alias : '',
-                $this->attributes ? ' '.$this->attributes : ''
-            ).PHP_EOL;
-        $str .= $this->value->str($current_indent.$this->make_indent($indent), $indent);
+        $str .= $current_indent.sprintf('%s{', $this->getValueLabel()).PHP_EOL;
+        $str .= $this->childs->str($current_indent.$this->make_indent($indent), $indent);
         $str .= $current_indent.'}';
         if(!$current_indent){
             $str .= PHP_EOL;
@@ -76,26 +57,26 @@ class PUMLElementBlock extends PUMLElement implements \ArrayAccess {
 
     public function offsetExists($offset)
     {
-        return isset($this->value[$offset]);
+        return isset($this->childs[$offset]);
     }
 
     public function offsetGet($offset)
     {
-        return $this->value[$offset];
+        return $this->childs[$offset];
     }
 
     public function offsetSet($offset, $value)
     {
         if (is_null($offset)) {
-            $this->value[] = $value;
+            $this->childs[] = $value;
         } else {
-            $this->value[$offset] = $value;
+            $this->childs[$offset] = $value;
         }
     }
 
     public function offsetUnset($offset)
     {
-        unset($this->value[$offset]);
+        unset($this->childs[$offset]);
     }
 
 

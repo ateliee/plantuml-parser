@@ -2,11 +2,12 @@
 namespace Ateliee\PlantUMLParser\Parser;
 
 use Ateliee\PlantUMLParser\Exception\FileOpenException;
+use Ateliee\PlantUMLParser\PUMLElementList;
 
 trait PUMLOutputTrait
 {
     /**
-     * @param PUMLElement $element
+     * @param PUMLElementList $element
      * @param int $indent
      * @return string
      */

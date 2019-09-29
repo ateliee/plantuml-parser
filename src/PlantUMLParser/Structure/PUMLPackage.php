@@ -1,9 +1,9 @@
 <?php
 namespace Ateliee\PlantUMLParser\Structure;
 
-use Ateliee\PlantUMLParser\PUMLElementBlock;
+use Ateliee\PlantUMLParser\PUMLObject;
 
-class PUMLPackage extends PUMLElementBlock {
+class PUMLPackage extends PUMLObject {
 
     public function __construct($value, $alias = null, $attributes = null)
     {

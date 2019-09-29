@@ -1,9 +1,9 @@
 <?php
 namespace Ateliee\PlantUMLParser\Structure;
 
-use Ateliee\PlantUMLParser\PUMLElementBlock;
+use Ateliee\PlantUMLParser\PUMLObject;
 
-class PUMLSkinParam extends PUMLElementBlock {
+class PUMLSkinParam extends PUMLObject {
 
     /**
      * PUMLSkinParam constructor.
