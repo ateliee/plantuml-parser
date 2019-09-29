@@ -1,28 +1,20 @@
 @startuml
 
 /'
-  
-  
   図の中で目立たせたいエンティティに着色するための
   色の名前（定数）を定義します。
-  
-  
 '/
 !define MAIN_ENTITY #E2EFDA-C6E0B4
 !define MAIN_ENTITY_2 #FCE4D6-F8CBAD
 
-/'   他の色も、用途が分りやすいように名前をつけます。   '/
+/'  他の色も、用途が分りやすいように名前をつけます。  '/
 !define METAL #F2F2F2-D9D9D9
 !define MASTER_MARK_COLOR #AAFFAA
 !define TRANSACTION_MARK_COLOR #FFAA00
 
 /'
-  
-  
   デフォルトのスタイルを設定します。
   この場合の指定は class です。entity ではエラーになります。
-  
-  
 '/
 skinparam class{
   BackgroundColor METAL
@@ -45,14 +37,10 @@ package "外部データベース" as ext <<Database>>{
 package "開発対象システム" as target_system{
 
   /'
-    
-    
     マスターテーブルを M、トランザクションを T などと安直にしていますが、
     チーム内でルールを決めればなんでも良いと思います。交差テーブルは "I" とか。
     角丸四角形が描けない代替です。
     １文字なら "主" とか "従" とか日本語でも OK だったのが受ける。
-    
-    
   '/
   entity "注文テーブル" as order <<主,TRANSACTION_MARK_COLOR>> MAIN_ENTITY{
     + 注文ID [PK]

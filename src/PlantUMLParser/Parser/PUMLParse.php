@@ -122,15 +122,17 @@ class PUMLParse
                         return $element;
                     }
                 }else{
-                    $comment = $matchs[1].PHP_EOL;
+                    $comment = $matchs[1];
                     $end_block = false;
+                    $n = 0;
                     while (($str = $reader->next()) !== false) {
                         if(preg_match('/^(.*)\'\/$/', $str, $matchs)) {
                             $comment .= $matchs[1];
                             $end_block = true;
                             break;
                         }
-                        $comment .= $str.PHP_EOL;
+                        $comment .= ($n ? PHP_EOL : '').$str;
+                        $n ++;
                     }
                     if(!$end_block){
                         throw new SyntaxException(sprintf('Invalid Comment Block End "\'" Not Found. "%s" line %d', $str, $reader->getLine()));
