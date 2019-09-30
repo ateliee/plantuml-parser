@@ -21,6 +21,13 @@ class PUMLKeyValue extends PUMLElement {
 
     public function str($current_indent, $indent)
     {
-        return $this->getOutputComment($current_indent).$current_indent.sprintf('%s %s', $this->key, $this->value);
+        return $this->getOutputComment($current_indent).$current_indent.(string)$this;
     }
+
+    public function __toString()
+    {
+        return sprintf('%s %s', $this->key, $this->value);
+    }
+
+
 }
