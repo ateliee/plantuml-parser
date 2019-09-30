@@ -3,7 +3,7 @@ namespace Ateliee\Tests;
 use Ateliee\PlantUMLParser\PUMLElementList;
 use Ateliee\PlantUMLParser\PUMLParser;
 
-class PUMLAssert extends \PHPUnit_Framework_TestCase
+class PUMLAssert extends \PHPUnit_Framework_Assert
 {
 //    public static function assertJsonColumns(array $expectedColumns, $json)
 //    {
@@ -34,7 +34,7 @@ class PUMLAssert extends \PHPUnit_Framework_TestCase
         // 一致しているかどうか
         self::assertEquals(
             $uml,
-            (string)$result
+            $parser->output($result)
         );
     }
 }
