@@ -19,6 +19,8 @@ trait PUMLOutputTrait
     }
 
     /**
+     * ファイルの保存
+     *
      * @param string $file 保存するファイル名
      * @param int $indent インデント数
      * @throws FileOpenException

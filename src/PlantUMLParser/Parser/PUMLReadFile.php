@@ -40,8 +40,12 @@ class PUMLReadFile extends PUMLRead {
         if($this->file != null){
             throw new FileOpenException('Already open file.');
         }
-        $this->file = fopen($this->filename, "r");
+        $this->file = @fopen($this->filename, "r");
         $this->number = 0;
+
+        if(!$this->file){
+            throw new FileOpenException(sprintf('failed to open file %s.', $this->filename));
+        }
         return $this->file != null;
     }
 

@@ -46,8 +46,29 @@ Foo1 -> Foo6 : To collections
         $uml = $parser->loadFile(__DIR__.'/../sample/test1.puml');
         $this->assertInstanceOf(PUMLElementList::class, $uml);
 
+        $parser->save(__DIR__.'/../sample/test4.puml', $uml);
+
         $uml = $parser->loadFile(__DIR__.'/../sample/test2.puml');
         $this->assertInstanceOf(PUMLElementList::class, $uml);
+
+        $uml = $parser->loadFile(__DIR__.'/../sample/test3.puml');
+        $this->assertInstanceOf(PUMLElementList::class, $uml);
+    }
+
+    /**
+     * エンコード正常系
+     */
+    public function testEncode()
+    {
+        $parser = new PUMLParser();
+        $uml = $parser->loadString("@startuml
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: another authentication Response
+
+@enduml");
+        $this->assertInternalType('string', $parser->encodep($parser->output($uml)));
     }
 
     /**
@@ -58,6 +79,16 @@ Foo1 -> Foo6 : To collections
 
         $parser = new PUMLParser();
         $parser->loadFile(null);
+    }
+
+    /**
+     * @test
+     * @expectedException Ateliee\PlantUMLParser\Exception\FileOpenException
+     */
+    public function testFileOpenException2(){
+
+        $parser = new PUMLParser();
+        $parser->loadFile(__DIR__.'/a');
     }
 
     /**
