@@ -81,5 +81,10 @@ class PUMLElementList extends PUMLElement implements \ArrayAccess {
         unset($this->value[$offset]);
     }
 
+    public function __toString()
+    {
+        return $this->str('', 2);
+    }
+
 
 }

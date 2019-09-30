@@ -3,6 +3,7 @@ namespace Ateliee\Tests\Parser;
 
 use Ateliee\PlantUMLParser\PUMLElementList;
 use Ateliee\PlantUMLParser\PUMLParser;
+use Ateliee\Tests\PUMLAssert;
 
 class PUMLReadTest extends \PHPUnit_Framework_TestCase {
 
@@ -13,21 +14,14 @@ class PUMLReadTest extends \PHPUnit_Framework_TestCase {
      */
     public function testValidSequence()
     {
-        $parser = new PUMLParser();
-
-        $this->assertInstanceOf(
-            PUMLElementList::class,
-            $parser->parse("@startuml
+        PUMLAssert::assertEncodeDecode("@startuml
 Alice -> Bob: Authentication Request
 Bob --> Alice: Authentication Response
 
 Alice -> Bob: Another authentication Request
 Alice <-- Bob: another authentication Response
-@enduml")
-        );
-        $this->assertInstanceOf(
-            PUMLElementList::class,
-            $parser->parse("@startuml
+@enduml");
+        PUMLAssert::assertEncodeDecode("@startuml
 actor Foo1
 boundary Foo2
 control Foo3
@@ -40,11 +34,8 @@ Foo1 -> Foo4 : To entity
 Foo1 -> Foo5 : To database
 Foo1 -> Foo6 : To collections
 
-@enduml")
-        );
-        $this->assertInstanceOf(
-            PUMLElementList::class,
-            $parser->parse("@startuml
+@enduml");
+        PUMLAssert::assertEncodeDecode("@startuml
 actor Bob #red
 ' The only difference between actor
 'and participant is the drawing
@@ -57,36 +48,24 @@ participant \"I have a really\nlong name\" as L #99FF99
 Alice->Bob: Authentication Request
 Bob->Alice: Authentication Response
 Bob->L: Log transaction
-@enduml")
-        );
-        $this->assertInstanceOf(
-            PUMLElementList::class,
-            $parser->parse("@startuml
+@enduml");
+        PUMLAssert::assertEncodeDecode("@startuml
 participant Last order 30
 participant Middle order 20
 participant First order 10
-@enduml")
-        );
-        $this->assertInstanceOf(
-            PUMLElementList::class,
-            $parser->parse("@startuml
+@enduml");
+        PUMLAssert::assertEncodeDecode("@startuml
 Alice -> \"Bob()\" : Hello
 \"Bob()\" -> \"This is very\nlong\" as Long
 ' You can also declare:
 ' \"Bob()\" -> Long as \"This is very\nlong\"
 Long --> \"Bob()\" : ok
-@enduml")
-        );
-        $this->assertInstanceOf(
-            PUMLElementList::class,
-            $parser->parse("@startuml
+@enduml");
+        PUMLAssert::assertEncodeDecode("@startuml
 Alice->Alice: This is a signal to self.\nIt also demonstrates\nmultiline \ntext
-@enduml")
-        );
+@enduml");
 
-        $this->assertInstanceOf(
-            PUMLElementList::class,
-            $parser->parse("@startuml
+        PUMLAssert::assertEncodeDecode("@startuml
 Bob ->x Alice
 Bob -> Alice
 Bob ->> Alice
@@ -99,26 +78,17 @@ Bob o\\-- Alice
 
 Bob <-> Alice
 Bob <->o Alice
-@enduml")
-        );
-        $this->assertInstanceOf(
-            PUMLElementList::class,
-            $parser->parse("@startuml
+@enduml");
+        PUMLAssert::assertEncodeDecode("@startuml
 Bob -[#red]> Alice : hello
 Alice -[#0000FF]->Bob : ok
-@enduml")
-        );
-        $this->assertInstanceOf(
-            PUMLElementList::class,
-            $parser->parse("@startuml
+@enduml");
+        PUMLAssert::assertEncodeDecode("@startuml
 autonumber
 Bob -> Alice : Authentication Request
 Bob <- Alice : Authentication Response
-@enduml")
-        );
-        $this->assertInstanceOf(
-            PUMLElementList::class,
-            $parser->parse("@startuml
+@enduml");
+        PUMLAssert::assertEncodeDecode("@startuml
 autonumber
 Bob -> Alice : Authentication Request
 Bob <- Alice : Authentication Response
@@ -131,11 +101,8 @@ autonumber 40 10
 Bob -> Alice : Yet another authentication Request
 Bob <- Alice : Yet another authentication Response
 
-@enduml")
-        );
-        $this->assertInstanceOf(
-            PUMLElementList::class,
-            $parser->parse("@startuml
+@enduml");
+        PUMLAssert::assertEncodeDecode("@startuml
 autonumber \"<b>[000]\"
 Bob -> Alice : Authentication Request
 Bob <- Alice : Authentication Response
@@ -148,7 +115,6 @@ autonumber 40 10 \"<font color=red><b>Message 0  \"
 Bob -> Alice : Yet another authentication Request
 Bob <- Alice : Yet another authentication Response
 
-@enduml")
-        );
+@enduml");
     }
 }
