@@ -46,12 +46,21 @@ abstract class PUMLElement {
     }
 
     /**
+     * @return string
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+
+    /**
      * コメントを出力
      *
      * @param  string $indent
      * @return string
      */
-    public function getOutputComment($indent)
+    public function getOutputComment($indent = '')
     {
         if($this->comment){
             $list = explode(PHP_EOL, $this->comment);

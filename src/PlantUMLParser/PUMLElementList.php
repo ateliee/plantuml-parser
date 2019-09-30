@@ -19,7 +19,7 @@ class PUMLElementList extends PUMLElement implements \ArrayAccess, \Countable {
     /**
      * 要素の追加
      *
-     * @param PUMLElement $elm
+     * @param PUMLElement|PUMLElement[] $elm
      * @throws PUMLException
      * @return $this
      */

@@ -28,10 +28,35 @@ class PUMLElementTest extends \PHPUnit_Framework_TestCase {
         unset($uml[2]);
         $this->assertEquals(count($uml), 2);
 
+        $uml[2] = new PUMLStr('SAMPLE4');
+        $uml->add([
+            new PUMLStr('SAMPLE5'),
+            new PUMLStr('SAMPLE6')
+        ]);
+        $this->assertEquals(count($uml), 5);
+
+        $this->assertContainsOnly('string', [(string)$uml]);
+
         // check name
         $this->assertEquals($uml::name(), 'ElementList');
         $this->assertEquals(PUMLStr::name(), 'Str');
 //        $this->assertexce('string', [$parser->output($uml)]);
+    }
+
+    public function testElement()
+    {
+        $str = new PUMLStr('SAMPLE');
+        $this->assertEquals('SAMPLE', $str->getValue());
+        $this->assertEquals('', $str->getOutputComment());
+        $this->assertEquals($str, $str->setComment('test'));
+        $this->assertEquals('test', $str->getComment());
+
+        $str->setComment('これはテスト');
+
+        $this->assertEquals("/' これはテスト '/", trim($str->getOutputComment()));
+
+        $str->setComment("複数行\nこれもテスト");
+        $this->assertEquals("/'\n  複数行\n  これもテスト\n'/", trim($str->getOutputComment()));
     }
 
     /**

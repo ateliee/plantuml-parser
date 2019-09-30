@@ -36,4 +36,58 @@ Foo1 -> Foo6 : To collections
 
 @enduml");
     }
+
+    /**
+     * @test
+     * @expectedException Ateliee\PlantUMLParser\Exception\InvalidParamaterException
+     */
+    public function testInvalidParamaterException(){
+
+        $parser = new PUMLParser();
+        $parser->parse(null);
+    }
+
+
+    /**
+     * @test
+     * @expectedException Ateliee\PlantUMLParser\Exception\SyntaxException
+     */
+    public function testSyntaxException(){
+
+        $parser = new PUMLParser();
+        $parser->parse("@startuml
+aasd");
+        $parser->parse("@startuml
+        @startuml
+aasd");
+    }
+    /**
+     * @test
+     * @expectedException Ateliee\PlantUMLParser\Exception\SyntaxException
+     */
+    public function testSyntaxException2(){
+
+        $parser = new PUMLParser();
+        $parser->parse("@startuml
+aasd");
+    }
+    /**
+     * @test
+     * @expectedException Ateliee\PlantUMLParser\Exception\SyntaxException
+     */
+    public function testSyntaxException3(){
+
+        $parser = new PUMLParser();
+        $parser->parse("@enduml");
+    }
+    /**
+     * @test
+     * @expectedException Ateliee\PlantUMLParser\Exception\SyntaxException
+     */
+    public function testSyntaxException4(){
+
+        $parser = new PUMLParser();
+        $parser->parse("@enduml
+        aaaaa");
+    }
 }
