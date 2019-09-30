@@ -6,7 +6,7 @@ use Ateliee\PlantUMLParser\Exception\PUMLException;
 /**
  * @property PUMLElement[] $value
  */
-class PUMLElementList extends PUMLElement implements \ArrayAccess {
+class PUMLElementList extends PUMLElement implements \ArrayAccess, \Countable {
 
     /**
      * PUMLElementList constructor.
@@ -81,10 +81,13 @@ class PUMLElementList extends PUMLElement implements \ArrayAccess {
         unset($this->value[$offset]);
     }
 
+    public function count()
+    {
+        return count($this->value);
+    }
+
     public function __toString()
     {
         return $this->str('', 2);
     }
-
-
 }

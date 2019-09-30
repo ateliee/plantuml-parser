@@ -25,6 +25,9 @@ class PUMLElementTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals(isset($uml[2]), true);
         $this->assertEquals(((string)$uml[2]), 'SAMPLE3');
 
+        unset($uml[2]);
+        $this->assertEquals(count($uml), 2);
+
         // check name
         $this->assertEquals($uml::name(), 'ElementList');
         $this->assertEquals(PUMLStr::name(), 'Str');
