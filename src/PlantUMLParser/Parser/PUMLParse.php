@@ -29,37 +29,32 @@ class PUMLParse
     /**
      * Read String
      *
-     * @param $str
-     * @throws SyntaxException
-     * @throws PUMLException
-     * @throws InvalidParamaterException
+     * @param string $str
      * @return PUMLElementList
      */
-    public function parse($str){
-        $this->parseStatus = self::PARSESTATUS_EMPTY;
-        $root = $element = new PUMLElementList();
-
-        $reader = new PUMLReadString($str);
-        while(($item = $reader->next()) !== false){
-            $element = $this->parseLine($reader, $element, $item);
-        }
-        if($this->parseStatus != self::PARSESTATUS_FINISH){
-            throw new SyntaxException(sprintf('Not Found @enduml.'));
-        }
-        return $root;
+    public function loadString($str){
+        return $this->parserExecute(new PUMLReadString($str));
     }
 
     /**
      * Read File
      *
-     * @param $file
-     * @throws FileOpenException
-     * @throws SyntaxException
-     * @throws PUMLException
+     * @param string $file
      * @return PUMLElementList
      */
-    public function load($file){
-        $reader = new PUMLReadFile($file);
+    public function loadFile($file){
+        return $this->parserExecute(new PUMLReadFile($file));
+    }
+
+    /**
+     * @param PUMLRead $reader
+     * @return PUMLElementList
+     *
+     * @throws FileOpenException
+     * @throws PUMLException
+     * @throws SyntaxException
+     */
+    protected function parserExecute($reader){
         if($reader->open()){
             try{
                 $this->parseStatus = self::PARSESTATUS_EMPTY;

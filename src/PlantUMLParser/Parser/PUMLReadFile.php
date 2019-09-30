@@ -24,7 +24,7 @@ class PUMLReadFile extends PUMLRead {
     public function __construct($str)
     {
         if(!is_string($str)){
-            throw new InvalidParamaterException();
+            throw new FileOpenException();
         }
         $this->filename = $str;
         $this->file = null;

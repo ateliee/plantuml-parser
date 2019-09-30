@@ -1,24 +1,36 @@
 @startuml
 
-/' commnt to here '/
-!define MAIN_ENTITY #FCE4D6-F8CBAD
+/'
+  図の中で目立たせたいエンティティに着色するための
+  色の名前（定数）を定義します。
+'/
+!define MAIN_ENTITY #E2EFDA-C6E0B4
+!define MAIN_ENTITY_2 #FCE4D6-F8CBAD
 
-/' default style. '/
+/'  他の色も、用途が分りやすいように名前をつけます。  '/
+!define METAL #F2F2F2-D9D9D9
+!define MASTER_MARK_COLOR #AAFFAA
+!define TRANSACTION_MARK_COLOR #FFAA00
+
+/'
+  デフォルトのスタイルを設定します。
+  この場合の指定は class です。entity ではエラーになります。
+'/
 skinparam class{
   BackgroundColor METAL
   BorderColor Black
   ArrowColor Black
 }
 
-package "DB" as ext <<Database>>{
-  entity "Customer" as customer{
-    + ID [PK]
+package "外部データベース" as ext <<Database>>{
+  entity "顧客マスタ" as customer{
+    + 顧客ID [PK]
     --
-    name
-    zip
-    address
-    tel
-    fax
+    顧客名
+    郵便番号
+    住所
+    電話番号
+    FAX
   }
 }
 
@@ -43,8 +55,50 @@ package "開発対象システム" as target_system{
     合計金額
     消費税額
   }
+  entity "注文明細テーブル" as order_detail <<T,TRANSACTION_MARK_COLOR>> MAIN_ENTITY_2{
+    + 注文ID [PK]
+    + 明細番号 [PK]
+    --
+    # SKU [FK]
+    注文数
+    税抜価格
+    税込価格
+  }
+  entity "SKUマスタ" as sku <<M,MASTER_MARK_COLOR>>{
+    + SKU [PK]
+    --
+    # 商品ID [FK]
+    カラー
+    サイズ
+    重量
+    販売単価
+    仕入単価
+  }
+  entity "商品マスタ" as product <<M,MASTER_MARK_COLOR>>{
+    + 商品ID [PK]
+    --
+    商品名
+    原産国
+    # 仕入先ID [FK]
+    商品カテゴリ
+    配送必要日数
+  }
+  entity "仕入先マスタ" as vendor <<M,MASTER_MARK_COLOR>>{
+    + 仕入先ID [PK]
+    --
+    仕入れ先名
+    郵便番号
+    住所
+    電話番号
+    FAX番号
+  }
 }
 
 customer |o-ri-o{ order
+order ||-ri-|{ order_detail
+order_detail }-do-|| sku
+sku }-le-|| product
+product }o-le-|| vendor
+note bottom of customer : 別プロジェクト\nDB-Linkで参照する
 
 @enduml

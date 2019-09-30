@@ -12,7 +12,7 @@ class PUMLReadTest extends \PHPUnit_Framework_TestCase {
      *
      * @see http://plantuml.com/ja/sequence-diagram
      */
-    public function testValidSequence()
+    public function testParseSequence()
     {
         PUMLAssert::assertEncodeDecode("@startuml
 Alice -> Bob: Authentication Request
@@ -38,13 +38,36 @@ Foo1 -> Foo6 : To collections
     }
 
     /**
+     * ファイル読み込み正常系
+     */
+    public function testLoadfile()
+    {
+        $parser = new PUMLParser();
+        $uml = $parser->loadFile(__DIR__.'/../sample/test1.puml');
+        $this->assertInstanceOf(PUMLElementList::class, $uml);
+
+        $uml = $parser->loadFile(__DIR__.'/../sample/test2.puml');
+        $this->assertInstanceOf(PUMLElementList::class, $uml);
+    }
+
+    /**
+     * @test
+     * @expectedException Ateliee\PlantUMLParser\Exception\FileOpenException
+     */
+    public function testFileOpenException(){
+
+        $parser = new PUMLParser();
+        $parser->loadFile(null);
+    }
+
+    /**
      * @test
      * @expectedException Ateliee\PlantUMLParser\Exception\InvalidParamaterException
      */
     public function testInvalidParamaterException(){
 
         $parser = new PUMLParser();
-        $parser->parse(null);
+        $parser->loadString(null);
     }
 
 
@@ -55,9 +78,9 @@ Foo1 -> Foo6 : To collections
     public function testSyntaxException(){
 
         $parser = new PUMLParser();
-        $parser->parse("@startuml
+        $parser->loadString("@startuml
 aasd");
-        $parser->parse("@startuml
+        $parser->loadString("@startuml
         @startuml
 aasd");
     }
@@ -68,7 +91,7 @@ aasd");
     public function testSyntaxException2(){
 
         $parser = new PUMLParser();
-        $parser->parse("@startuml
+        $parser->loadString("@startuml
 aasd");
     }
     /**
@@ -78,7 +101,7 @@ aasd");
     public function testSyntaxException3(){
 
         $parser = new PUMLParser();
-        $parser->parse("@enduml");
+        $parser->loadString("@enduml");
     }
     /**
      * @test
@@ -87,7 +110,7 @@ aasd");
     public function testSyntaxException4(){
 
         $parser = new PUMLParser();
-        $parser->parse("@enduml
+        $parser->loadString("@enduml
         aaaaa");
     }
 }

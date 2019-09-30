@@ -25,7 +25,7 @@ class PUMLAssert extends \PHPUnit_Framework_Assert
 
         $parser = new PUMLParser();
 
-        $result = $parser->parse($uml);
+        $result = $parser->loadString($uml);
         // 一致しているかどうか
         self::assertInstanceOf(
             PUMLElementList::class,
