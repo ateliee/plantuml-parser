@@ -11,13 +11,5 @@ before_script:
 script:
   - composer test tests
 
-after_script:
-  - php vendor/bin/coveralls -v
-
 after_success:
   - travis_retry php vendor/bin/php-coveralls -v
-
-notifications:
-  slack:
-    rooms:
-      secure: your_token_key
