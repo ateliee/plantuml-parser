@@ -1,7 +1,7 @@
 # PlantUML parser for PHP
 
 [![Build Status](https://travis-ci.org/ateliee/plantuml-parser.svg?branch=development)](https://travis-ci.org/ateliee/plantuml-parser)
-[![Coverage Status](https://coveralls.io/repos/github/ateliee/plantuml-parser/badge.svg?branch=development)](https://coveralls.io/github/ateliee/plantuml-parser?branch=development)
+[![Coverage Status](https://coveralls.io/repos/github/ateliee/plantuml-parser/badge.svg?branch=%28HEAD+detached+at+75dabae%29)](https://coveralls.io/github/ateliee/plantuml-parser?branch=%28HEAD+detached+at+75dabae%29)
 [![Latest Stable Version](https://poser.pugx.org/ateliee/plantuml-parser/v/stable)](https://packagist.org/packages/ateliee/plantuml-parser)
 [![Total Downloads](https://poser.pugx.org/ateliee/plantuml-parser/downloads)](https://packagist.org/packages/ateliee/plantuml-parser)
 
