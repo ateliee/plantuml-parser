@@ -1,6 +1,7 @@
 <?php
-namespace Ateliee\PlantUMLParser\Exception;
 /**
  * FileOpenException
  */
+namespace Ateliee\PlantUMLParser\Exception;
+
 class FileOpenException extends PUMLException {}

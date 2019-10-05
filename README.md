@@ -156,6 +156,11 @@ customer |o-ri-o{ order
 @enduml
 ```
 
+## コードチェック
+```
+vendor/bin/phpcs src
+```
+
 ## 参考
 * [Plant UML](http://plantuml.com/ja/)
 * [Real World PlantUML](https://real-world-plantuml.com/)

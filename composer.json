@@ -18,10 +18,13 @@
     "require-dev": {
         "phpunit/phpunit": "^4.8",
         "psy/psysh": "^0.9.9",
-        "php-coveralls/php-coveralls": "^2.1"
+        "php-coveralls/php-coveralls": "^2.1",
+        "squizlabs/php_codesniffer": "^3.5"
     },
     "scripts": {
-        "test": "phpunit"
+        "test": "phpunit",
+        "check": "php vendor/bin/phpcs --standard=phpcs.xml",
+        "report": "php vendor/bin/phpcs -sq --no-colors --report-diff=./logs/report-diff.log --report-full=./logs/report-full.log --standard=phpcs.xml"
     },
     "config": {
         "platform": {
