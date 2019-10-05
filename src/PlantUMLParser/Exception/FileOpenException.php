@@ -4,4 +4,7 @@
  */
 namespace Ateliee\PlantUMLParser\Exception;
 
-class FileOpenException extends PUMLException {}
+class FileOpenException extends PUMLException
+{
+
+}

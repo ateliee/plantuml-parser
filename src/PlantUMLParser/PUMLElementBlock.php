@@ -4,7 +4,8 @@ namespace Ateliee\PlantUMLParser;
 /**
  * @property string $value
  */
-class PUMLElementBlock extends PUMLElement implements \ArrayAccess {
+class PUMLElementBlock extends PUMLElement implements \ArrayAccess
+{
 
     /**
      * @var PUMLElementList $childs
@@ -25,7 +26,8 @@ class PUMLElementBlock extends PUMLElement implements \ArrayAccess {
      * @param PUMLElement $elm
      * @return $this
      */
-    public function add($elm){
+    public function add($elm)
+    {
         $this->childs->add($elm);
         return $this;
     }
@@ -33,7 +35,8 @@ class PUMLElementBlock extends PUMLElement implements \ArrayAccess {
     /**
      * @return string
      */
-    public function getValueLabel(){
+    public function getValueLabel()
+    {
         return $this->value;
     }
 
@@ -46,9 +49,9 @@ class PUMLElementBlock extends PUMLElement implements \ArrayAccess {
     {
         $str = $this->getOutputComment($current_indent);
         $str .= $current_indent.sprintf('%s{', $this->getValueLabel()).PHP_EOL;
-        $str .= $this->childs->str($current_indent.$this->make_indent($indent), $indent);
+        $str .= $this->childs->str($current_indent.$this->makeIndent($indent), $indent);
         $str .= $current_indent.'}';
-        if(!$current_indent){
+        if (!$current_indent) {
             $str .= PHP_EOL;
         }
         return $str;
@@ -78,6 +81,4 @@ class PUMLElementBlock extends PUMLElement implements \ArrayAccess {
     {
         unset($this->childs[$offset]);
     }
-
-
 }

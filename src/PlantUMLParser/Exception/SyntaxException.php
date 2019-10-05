@@ -1,6 +1,10 @@
 <?php
 namespace Ateliee\PlantUMLParser\Exception;
+
 /**
  * Syntax Error
  */
-class SyntaxException extends PUMLException {}
+class SyntaxException extends PUMLException
+{
+
+}

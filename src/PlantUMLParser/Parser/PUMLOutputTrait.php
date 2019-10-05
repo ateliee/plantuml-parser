@@ -11,7 +11,8 @@ trait PUMLOutputTrait
      * @param int $indent
      * @return string
      */
-    public function output($element, $indent = 2){
+    public function output($element, $indent = 2)
+    {
         $str = '@startuml'.PHP_EOL;
         $str .= $element->str('', $indent).PHP_EOL;
         $str .= '@enduml';
@@ -25,11 +26,12 @@ trait PUMLOutputTrait
      * @param int $indent インデント数
      * @throws FileOpenException
      */
-    public function save($file, $element, $indent = 2) {
-        if($fp = fopen($file, "w")){
+    public function save($file, $element, $indent = 2)
+    {
+        if ($fp = fopen($file, "w")) {
             fwrite($fp, $this->output($element, $indent));
             fclose($fp);
-        }else{
+        } else {
             throw new FileOpenException();
         }
     }
@@ -41,13 +43,15 @@ trait PUMLOutputTrait
      * @param string $text
      * @return mixed
      */
-    public function encodep($text) {
+    public function encodep($text)
+    {
         $data = utf8_encode($text);
         $compressed = gzdeflate($data, 9);
         return $this->encode64($compressed);
     }
 
-    protected function encode6bit($b) {
+    protected function encode6bit($b)
+    {
         if ($b < 10) {
             return chr(48 + $b);
         }
@@ -69,7 +73,8 @@ trait PUMLOutputTrait
         return '?';
     }
 
-    protected function append3bytes($b1, $b2, $b3) {
+    protected function append3bytes($b1, $b2, $b3)
+    {
         $c1 = $b1 >> 2;
         $c2 = (($b1 & 0x3) << 4) | ($b2 >> 4);
         $c3 = (($b2 & 0xF) << 2) | ($b3 >> 6);
@@ -82,17 +87,21 @@ trait PUMLOutputTrait
         return $r;
     }
 
-    protected function encode64($c) {
+    protected function encode64($c)
+    {
         $str = "";
         $len = strlen($c);
         for ($i = 0; $i < $len; $i+=3) {
             if ($i+2==$len) {
                 $str .= $this->append3bytes(ord(substr($c, $i, 1)), ord(substr($c, $i+1, 1)), 0);
-            } else if ($i+1==$len) {
+            } elseif ($i+1==$len) {
                 $str .= $this->append3bytes(ord(substr($c, $i, 1)), 0, 0);
             } else {
-                $str .= $this->append3bytes(ord(substr($c, $i, 1)), ord(substr($c, $i+1, 1)),
-                    ord(substr($c, $i+2, 1)));
+                $str .= $this->append3bytes(
+                    ord(substr($c, $i, 1)),
+                    ord(substr($c, $i+1, 1)),
+                    ord(substr($c, $i+2, 1))
+                );
             }
         }
         return $str;

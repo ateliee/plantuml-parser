@@ -24,7 +24,8 @@
     "scripts": {
         "test": "phpunit",
         "check": "php vendor/bin/phpcs --standard=phpcs.xml",
-        "report": "php vendor/bin/phpcs -sq --no-colors --report-diff=./logs/report-diff.log --report-full=./logs/report-full.log --standard=phpcs.xml"
+        "report": "php vendor/bin/phpcs -sq --no-colors --report-diff=./logs/report-diff.log --report-full=./logs/report-full.log --standard=phpcs.xml",
+        "convert": "php vendor/bin/phpcbf --standard=phpcs.xml"
     },
     "config": {
         "platform": {

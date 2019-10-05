@@ -3,7 +3,8 @@ namespace Ateliee\PlantUMLParser\Structure;
 
 use Ateliee\PlantUMLParser\PUMLKeyValue;
 
-class PUMLDefine extends PUMLKeyValue {
+class PUMLDefine extends PUMLKeyValue
+{
 
     /**
      * @param string $current_indent
@@ -12,6 +13,8 @@ class PUMLDefine extends PUMLKeyValue {
      */
     public function str($current_indent, $indent)
     {
-        return $this->getOutputComment($current_indent).$current_indent.sprintf('!define %s %s', $this->key, $this->value);
+        return $this->getOutputComment($current_indent).
+            $current_indent.
+            sprintf('!define %s %s', $this->key, $this->value);
     }
 }

@@ -7,7 +7,8 @@ use Ateliee\PlantUMLParser\PUMLElement;
  * カーディナリティ
  * @see http://plantuml.com/ja/class-diagram#Hide
  */
-class PUMLRelation extends PUMLElement {
+class PUMLRelation extends PUMLElement
+{
 
     /**
      * @var string 対象先
@@ -37,7 +38,8 @@ class PUMLRelation extends PUMLElement {
     {
         return $this->getOutputComment($current_indent).
             $current_indent.
-            sprintf('%s %s %s%s',
+            sprintf(
+                '%s %s %s%s',
                 $this->value,
                 $this->related,
                 $this->value2,

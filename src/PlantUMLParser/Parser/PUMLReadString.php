@@ -3,7 +3,8 @@ namespace Ateliee\PlantUMLParser\Parser;
 
 use Ateliee\PlantUMLParser\Exception\InvalidParamaterException;
 
-class PUMLReadString extends PUMLRead {
+class PUMLReadString extends PUMLRead
+{
 
     /**
      * @var string[]
@@ -17,7 +18,7 @@ class PUMLReadString extends PUMLRead {
 
     public function __construct($str)
     {
-        if(!is_string($str)){
+        if (!is_string($str)) {
             throw new InvalidParamaterException();
         }
         $this->lines = explode(PHP_EOL, $str);
@@ -28,7 +29,8 @@ class PUMLReadString extends PUMLRead {
      * start
      * @return bool
      */
-    public function open(){
+    public function open()
+    {
         $this->number = 0;
         return true;
     }
@@ -38,8 +40,9 @@ class PUMLReadString extends PUMLRead {
      *
      * @return string|false
      */
-    public function next(){
-        if(count($this->lines) <= $this->number){
+    public function next()
+    {
+        if (count($this->lines) <= $this->number) {
             return false;
         }
         return trim($this->lines[$this->number++]);
@@ -48,14 +51,15 @@ class PUMLReadString extends PUMLRead {
     /**
      * end
      */
-    public function close(){
-
+    public function close()
+    {
     }
 
     /**
      * @return int
      */
-    public function getLine(){
+    public function getLine()
+    {
         return $this->number;
     }
 }

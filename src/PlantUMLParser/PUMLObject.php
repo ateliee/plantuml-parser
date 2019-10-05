@@ -1,7 +1,8 @@
 <?php
 namespace Ateliee\PlantUMLParser;
 
-class PUMLObject extends PUMLElementBlock {
+class PUMLObject extends PUMLElementBlock
+{
 
     /**
      * @var string $name
@@ -36,14 +37,14 @@ class PUMLObject extends PUMLElementBlock {
     /**
      * @return string
      */
-    public function getValueLabel(){
-        return sprintf('%s %s%s%s',
-                $this->value,
-                $this->alias ? "\"".$this->name."\"" : $this->name,
-                $this->alias ? ' as '.$this->alias : '',
-                $this->attributes ? ' '.$this->attributes : ''
-            );
+    public function getValueLabel()
+    {
+        return sprintf(
+            '%s %s%s%s',
+            $this->value,
+            $this->alias ? "\"".$this->name."\"" : $this->name,
+            $this->alias ? ' as '.$this->alias : '',
+            $this->attributes ? ' '.$this->attributes : ''
+        );
     }
-
-
 }

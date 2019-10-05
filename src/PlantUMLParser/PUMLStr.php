@@ -1,7 +1,8 @@
 <?php
 namespace Ateliee\PlantUMLParser;
 
-class PUMLStr extends PUMLElement {
+class PUMLStr extends PUMLElement
+{
 
     public function str($current_indent, $indent)
     {

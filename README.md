@@ -157,9 +157,16 @@ customer |o-ri-o{ order
 ```
 
 ## コードチェック
+CodeSnifferを利用
+
 ```
-vendor/bin/phpcs src
+# レポート出力
+composer report
+# 自動修正
+composer convert
 ```
+
+
 
 ## 参考
 * [Plant UML](http://plantuml.com/ja/)

@@ -1,17 +1,19 @@
 <?php
 namespace Ateliee\PlantUMLParser;
 
-abstract class PUMLElement {
+abstract class PUMLElement
+{
 
     /**
      * get PUML Element name
      *
      * @return string
      */
-    public static function name(){
+    public static function name()
+    {
         $c = explode('\\', get_called_class());
         $c = end($c);
-        if(preg_match('/^PUML(.+)$/', $c, $matchs)){
+        if (preg_match('/^PUML(.+)$/', $c, $matchs)) {
             $c = $matchs[1];
         }
         return $c;
@@ -62,17 +64,17 @@ abstract class PUMLElement {
      */
     public function getOutputComment($indent = '')
     {
-        if($this->comment){
+        if ($this->comment) {
             $list = explode(PHP_EOL, $this->comment);
             $before = '/\'';
             $after = '\'/';
-            if(count($list) > 1){
+            if (count($list) > 1) {
                 $before = $indent.$before.PHP_EOL;
                 $after = PHP_EOL.$indent.$after;
-                $list = array_map(function($str) use ($indent){
+                $list = array_map(function ($str) use ($indent) {
                     return $indent.'  '.$str;
                 }, $list);
-            }else{
+            } else {
                 $before = $indent.$before.' ';
                 $after = ' '.$after;
             }
@@ -96,13 +98,14 @@ abstract class PUMLElement {
      * @param int $indent
      * @return mixed
      */
-    public abstract function str($current_indent, $indent);
+    abstract public function str($current_indent, $indent);
 
     /**
      * @param int $indent
      * @return string
      */
-    protected function make_indent($indent = 2){
+    protected function makeIndent($indent = 2)
+    {
         return str_repeat(' ', $indent);
     }
 }

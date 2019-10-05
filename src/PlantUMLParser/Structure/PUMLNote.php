@@ -8,7 +8,8 @@ use Ateliee\PlantUMLParser\PUMLElement;
  *
  * @todo end noteに対応
  */
-class PUMLNote extends PUMLElement {
+class PUMLNote extends PUMLElement
+{
 
     public function str($current_indent, $indent)
     {

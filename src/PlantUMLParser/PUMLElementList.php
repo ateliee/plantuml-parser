@@ -1,12 +1,14 @@
 <?php
 namespace Ateliee\PlantUMLParser;
+
 use Ateliee\PlantUMLParser\Exception\InvalidParamaterException;
 use Ateliee\PlantUMLParser\Exception\PUMLException;
 
 /**
  * @property PUMLElement[] $value
  */
-class PUMLElementList extends PUMLElement implements \ArrayAccess, \Countable {
+class PUMLElementList extends PUMLElement implements \ArrayAccess, \Countable
+{
 
     /**
      * PUMLElementList constructor.
@@ -23,19 +25,20 @@ class PUMLElementList extends PUMLElement implements \ArrayAccess, \Countable {
      * @throws PUMLException
      * @return $this
      */
-    public function add($elm){
+    public function add($elm)
+    {
 
         $elm = func_get_args();
-        if(count($elm) == 1){
+        if (count($elm) == 1) {
             $elm = current($elm);
         }
-        if(is_array($elm)){
-            foreach($elm as $e){
+        if (is_array($elm)) {
+            foreach ($elm as $e) {
                 $this->add($e);
             }
             return $this;
         }
-        if(!($elm instanceof PUMLElement)){
+        if (!($elm instanceof PUMLElement)) {
             throw new InvalidParamaterException();
         }
         $this->value[] = $elm;
@@ -50,7 +53,7 @@ class PUMLElementList extends PUMLElement implements \ArrayAccess, \Countable {
     public function str($current_indent, $indent)
     {
         $str = $this->getOutputComment($current_indent);
-        foreach($this->value as $v){
+        foreach ($this->value as $v) {
             $str .= $v->str($current_indent, $indent).PHP_EOL;
         }
         return $str;

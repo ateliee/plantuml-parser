@@ -4,7 +4,8 @@ namespace Ateliee\PlantUMLParser\Parser;
 use Ateliee\PlantUMLParser\Exception\FileOpenException;
 use Ateliee\PlantUMLParser\Exception\InvalidParamaterException;
 
-class PUMLReadFile extends PUMLRead {
+class PUMLReadFile extends PUMLRead
+{
 
     /**
      * @var string
@@ -23,7 +24,7 @@ class PUMLReadFile extends PUMLRead {
 
     public function __construct($str)
     {
-        if(!is_string($str)){
+        if (!is_string($str)) {
             throw new FileOpenException();
         }
         $this->filename = $str;
@@ -36,14 +37,15 @@ class PUMLReadFile extends PUMLRead {
      * @return bool
      * @throws FileOpenException
      */
-    public function open(){
-        if($this->file != null){
+    public function open()
+    {
+        if ($this->file != null) {
             throw new FileOpenException('Already open file.');
         }
         $this->file = @fopen($this->filename, "r");
         $this->number = 0;
 
-        if(!$this->file){
+        if (!$this->file) {
             throw new FileOpenException(sprintf('failed to open file %s.', $this->filename));
         }
         return $this->file != null;
@@ -54,10 +56,11 @@ class PUMLReadFile extends PUMLRead {
      *
      * @return string|false
      */
-    public function next(){
+    public function next()
+    {
         $this->number ++;
 
-        if(($str = fgets($this->file)) !== false){
+        if (($str = fgets($this->file)) !== false) {
             return trim($str);
         }
         return false;
@@ -66,7 +69,8 @@ class PUMLReadFile extends PUMLRead {
     /**
      * end
      */
-    public function close(){
+    public function close()
+    {
         fclose($this->file);
         $this->file = null;
         $this->number = 0;
@@ -75,7 +79,8 @@ class PUMLReadFile extends PUMLRead {
     /**
      * @return int
      */
-    public function getLine(){
+    public function getLine()
+    {
         return $this->number;
     }
 }

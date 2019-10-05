@@ -7,7 +7,8 @@ use Ateliee\PlantUMLParser\Parser\PUMLParse;
 /**
  * Class PUMLParser
  */
-class PUMLParser extends PUMLParse {
+class PUMLParser extends PUMLParse
+{
 
     use PUMLOutputTrait;
 }

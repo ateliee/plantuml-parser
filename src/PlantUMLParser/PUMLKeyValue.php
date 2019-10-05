@@ -1,7 +1,8 @@
 <?php
 namespace Ateliee\PlantUMLParser;
 
-class PUMLKeyValue extends PUMLElement {
+class PUMLKeyValue extends PUMLElement
+{
 
     /**
      * @var string $key
@@ -28,6 +29,4 @@ class PUMLKeyValue extends PUMLElement {
     {
         return sprintf('%s %s', $this->key, $this->value);
     }
-
-
 }
