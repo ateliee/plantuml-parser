@@ -12,4 +12,4 @@ script:
   - composer test tests
 
 after_success:
-  - travis_retry php vendor/bin/php-coveralls -v
+  - ([[ $TRAVIS_PHP_VERSION != 7.2 ]] || travis_retry php vendor/bin/php-coveralls -v)
