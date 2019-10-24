@@ -12,6 +12,7 @@
     "type": "library",
     "license": "MIT",
     "require": {
+        "php": ">=5.5.38",
         "vlucas/phpdotenv": "^3.6",
         "monolog/monolog": "^1.18.2"
     },
