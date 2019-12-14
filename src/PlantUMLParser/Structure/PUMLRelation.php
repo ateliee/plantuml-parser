@@ -36,14 +36,15 @@ class PUMLRelation extends PUMLElement
 
     public function str($current_indent, $indent)
     {
-        return $this->getOutputComment($current_indent).
-            $current_indent.
-            sprintf(
-                '%s %s %s%s',
-                $this->value,
-                $this->related,
-                $this->value2,
-                $this->attributes ? ' '.$this->attributes : ''
-            );
+        $str = $this->getOutputComment($current_indent);
+        $str .= $current_indent;
+        $str .= sprintf(
+            '%s %s %s%s',
+            $this->value,
+            $this->related,
+            $this->value2,
+            $this->attributes ? ' '.$this->attributes : ''
+        );
+        return $str;
     }
 }

@@ -11,12 +11,12 @@ abstract class PUMLElement
      */
     public static function name()
     {
-        $c = explode('\\', get_called_class());
-        $c = end($c);
-        if (preg_match('/^PUML(.+)$/', $c, $matchs)) {
-            $c = $matchs[1];
+        $cname = explode('\\', get_called_class());
+        $cname = end($cname);
+        if (preg_match('/^PUML(.+)$/', $cname, $matchs)) {
+            $cname = $matchs[1];
         }
-        return $c;
+        return $cname;
     }
 
     /**
