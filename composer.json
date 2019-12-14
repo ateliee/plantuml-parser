@@ -8,7 +8,10 @@
             "email": "info@ateliee.com"
         }
     ],
-    "keywords": ["PlantUML", "AsciiDoc"],
+    "keywords": [
+        "PlantUML",
+        "AsciiDoc"
+    ],
     "type": "library",
     "license": "MIT",
     "require": {
@@ -24,6 +27,7 @@
     "scripts": {
         "test": "phpunit",
         "check": "php vendor/bin/phpcs --standard=phpcs.xml",
+        "lint": "php vendor/bin/phpcs --standard=phpcs.xml",
         "report": "php vendor/bin/phpcs -sq --no-colors --report-diff=./logs/report-diff.log --report-full=./logs/report-full.log --standard=phpcs.xml",
         "convert": "php vendor/bin/phpcbf --standard=phpcs.xml"
     },
@@ -36,6 +40,15 @@
         "psr-4": {
             "Ateliee\\": "src/",
             "Ateliee\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "hooks": {
+            "pre-commit": [
+                "echo committing as $(git config user.name)",
+                "composer test",
+                "composer report"
+            ]
         }
     }
 }

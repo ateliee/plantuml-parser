@@ -5,8 +5,8 @@ use Ateliee\PlantUMLParser\PUMLElementList;
 use Ateliee\PlantUMLParser\PUMLParser;
 use Ateliee\Tests\PUMLAssert;
 
-class PUMLReadTest extends \PHPUnit_Framework_TestCase {
-
+class PUMLReadTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * シーケンス図の正常系テスト
      *
@@ -75,7 +75,8 @@ Alice <-- Bob: another authentication Response
      * @test
      * @expectedException Ateliee\PlantUMLParser\Exception\FileOpenException
      */
-    public function testFileOpenException(){
+    public function testFileOpenException()
+    {
 
         $parser = new PUMLParser();
         $parser->loadFile(null);
@@ -85,7 +86,8 @@ Alice <-- Bob: another authentication Response
      * @test
      * @expectedException Ateliee\PlantUMLParser\Exception\FileOpenException
      */
-    public function testFileOpenException2(){
+    public function testFileOpenException2()
+    {
 
         $parser = new PUMLParser();
         $parser->loadFile(__DIR__.'/a');
@@ -95,7 +97,8 @@ Alice <-- Bob: another authentication Response
      * @test
      * @expectedException Ateliee\PlantUMLParser\Exception\InvalidParamaterException
      */
-    public function testInvalidParamaterException(){
+    public function testInvalidParamaterException()
+    {
 
         $parser = new PUMLParser();
         $parser->loadString(null);
@@ -106,7 +109,8 @@ Alice <-- Bob: another authentication Response
      * @test
      * @expectedException Ateliee\PlantUMLParser\Exception\SyntaxException
      */
-    public function testSyntaxException(){
+    public function testSyntaxException()
+    {
 
         $parser = new PUMLParser();
         $parser->loadString("@startuml
@@ -119,7 +123,8 @@ aasd");
      * @test
      * @expectedException Ateliee\PlantUMLParser\Exception\SyntaxException
      */
-    public function testSyntaxException2(){
+    public function testSyntaxException2()
+    {
 
         $parser = new PUMLParser();
         $parser->loadString("@startuml
@@ -129,7 +134,8 @@ aasd");
      * @test
      * @expectedException Ateliee\PlantUMLParser\Exception\SyntaxException
      */
-    public function testSyntaxException3(){
+    public function testSyntaxException3()
+    {
 
         $parser = new PUMLParser();
         $parser->loadString("@enduml");
@@ -138,7 +144,8 @@ aasd");
      * @test
      * @expectedException Ateliee\PlantUMLParser\Exception\SyntaxException
      */
-    public function testSyntaxException4(){
+    public function testSyntaxException4()
+    {
 
         $parser = new PUMLParser();
         $parser->loadString("@enduml

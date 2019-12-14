@@ -10,8 +10,8 @@ use Ateliee\PlantUMLParser\PUMLObject;
 use Ateliee\PlantUMLParser\PUMLParser;
 use Ateliee\PlantUMLParser\PUMLStr;
 
-class PUMLElementTest extends \PHPUnit_Framework_TestCase {
-
+class PUMLElementTest extends \PHPUnit_Framework_TestCase
+{
     public function testList()
     {
         $uml = new PUMLElementList();
@@ -99,7 +99,8 @@ class PUMLElementTest extends \PHPUnit_Framework_TestCase {
      * @test
      * @expectedException Ateliee\PlantUMLParser\Exception\InvalidParamaterException
      */
-    public function testInvalidParamaterException(){
+    public function testInvalidParamaterException()
+    {
         $uml = new PUMLElementList();
         $uml->add('test');
     }

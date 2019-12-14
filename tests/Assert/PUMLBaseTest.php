@@ -1,5 +1,6 @@
 <?php
 namespace Ateliee\Tests;
+
 use Ateliee\PlantUMLParser\PUMLElementList;
 use Ateliee\PlantUMLParser\PUMLParser;
 
@@ -21,8 +22,8 @@ class PUMLAssert extends \PHPUnit_Framework_Assert
      *
      * @param string $uml
      */
-    public static function assertEncodeDecode($uml){
-
+    public static function assertEncodeDecode($uml)
+    {
         $parser = new PUMLParser();
 
         $result = $parser->loadString($uml);

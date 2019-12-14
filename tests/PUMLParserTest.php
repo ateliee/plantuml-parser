@@ -5,8 +5,8 @@ use Ateliee\PlantUMLParser\PUMLElement;
 use Ateliee\PlantUMLParser\PUMLElementList;
 use Ateliee\PlantUMLParser\PUMLParser;
 
-class PUMLParserTest extends \PHPUnit_Framework_TestCase {
-
+class PUMLParserTest extends \PHPUnit_Framework_TestCase
+{
     public function testParamaters()
     {
         $parser = new PUMLParser();

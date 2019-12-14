@@ -4,6 +4,8 @@
 
     <!-- 対象フォルダ -->
     <file>./src</file>
+    <file>./example</file>
+    <file>./tests</file>
 
     <!-- 除外したいファイル、ディレクトリ -->
     <exclude-pattern>*/database/*</exclude-pattern>
