@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.com/ateliee/plantuml-parser.svg?branch=master)](https://travis-ci.com/ateliee/plantuml-parser)
 [![Coverage Status](https://coveralls.io/repos/github/ateliee/plantuml-parser/badge.svg?branch=master)](https://coveralls.io/github/ateliee/plantuml-parser?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/ateliee/plantuml-parser/v/stable)](https://packagist.org/packages/ateliee/plantuml-parser)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d355ac2a6afd40ed9e246137dec66327)](https://www.codacy.com/manual/ateliee/plantuml-parser?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ateliee/plantuml-parser&amp;utm_campaign=Badge_Grade)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
 [PlantUML](http://plantuml.com/ja/)の書き込み・読み込みができるものがなかったので作成。
